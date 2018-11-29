@@ -1,0 +1,37 @@
+body {
+  background-color: #c8deec;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  color: #000d18;
+}
+
+h2 {
+  /* This font isn't a great choice actually, not web safe as most users won't have on their computers */
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  color: #7ca4bd;
+}
+
+h3 {
+  color: #887;
+  font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h4 {
+  color: #887;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000d18;
+}
+
+/* bonus */
+img {
+  border: 3px solid black;
+}

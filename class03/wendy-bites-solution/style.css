@@ -1,0 +1,54 @@
+h1 {
+  font-style: italic;
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+}
+
+h2 {
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-size: 25px;
+}
+
+h4 {
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+}
+
+h5 {
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: lighter;
+  margin-bottom: 0px;
+}
+
+
+a:link {
+  color: #33cc99;
+}
+
+a:visited {
+  color: #33cc99;
+}
+
+p {
+  font-size: 15px;
+}
+
+hr {
+  width: 90%;
+  color: #c0c0c0;
+  margin-top: 30px;
+}
+
+a {
+  color: #33cc99;
+}
+
+a:visited {
+  color: #33cc99;
+}
+
+ul {
+  list-style-type: square;
+}
