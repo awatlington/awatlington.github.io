@@ -1,0 +1,33 @@
+.wrapper {
+	text-align: center;
+	padding-top: 75px;
+}
+
+nav {
+	background-color: white;
+	padding-top: 15px;
+  }
+  
+  li {
+	float: left;
+  }
+  
+  li a {
+	display: block;
+	color: black;
+	text-align: center;
+	font-size: 18px;
+	padding: 14px 10px 30px 16px;
+	text-decoration: none;
+	font-family: "Source Sans Pro", sans-serif;
+  }
+  
+  .title {
+	background-color: white;
+	color: black;
+	font-size: 35px;
+	letter-spacing: .5px;
+	float: left;
+	text-indent: 50px;
+	font-family: "Merriweather", serif;
+  }

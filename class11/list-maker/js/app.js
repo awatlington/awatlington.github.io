@@ -13,12 +13,6 @@ $(document).ready(
                 $('#item').val('');
             });
 
-        $("input[name=item]").keyup(function (event) {
-            if (event.keyCode == 13) {
-                $("#clickme").click();
-            }
-        });
-
         $('ol').on('click', 'li', function () {
             $(this).toggleClass('strike').fadeOut('slow');
         });
@@ -26,8 +20,6 @@ $(document).ready(
         $('input').focus(function () {
             $(this).val('');
         });
-
-
     });
 
 

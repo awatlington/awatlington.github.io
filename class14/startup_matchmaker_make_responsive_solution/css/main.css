@@ -1,0 +1,222 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 20px;
+	line-height: 1.5;
+	width: 80%;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+
+/* Text Styles */
+
+h1 {
+	font-size: 40px;
+	line-height: 1;
+}
+
+h2 {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+h3 {
+	font-family: 'Merriweather', serif;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+p {
+	margin: 0 0 30px 0;
+}
+
+
+/* Shared Styles */
+
+.button {
+	font-family: 'Oswald', sans-serif;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bold;
+	background: yellow;
+	color: black;
+	display: block;
+	text-align: center;
+	padding: 12px;
+	box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .2);
+	border-radius: 5px;
+}
+
+
+/* Header Styles */
+
+header {
+	background: black;
+	color: white;
+	overflow: hidden;
+	border-bottom: 4px solid yellow;
+	padding: 0 28px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	padding-bottom: 20px;
+}
+
+.header-a {
+	/* "inherit" allows us to pull the color from the parent element, which will help us overide the browser's default "a" coloring. */
+	color: inherit;
+	text-decoration: none;
+}
+
+.header-h1 {
+	color: yellow;
+	font-family: 'Merriweather', serif;
+	font-size: 30px;
+	margin: 20px 0 0 0;
+}
+
+.header-nav {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.header-nav__a {
+	padding-left: 20px;
+}
+
+.header-nav__a:hover {
+	color: yellow;
+}
+
+
+/* Tagline Styles */
+
+.tagline {
+	font-family: 'Merriweather', serif;
+	text-align: center;
+	margin: 0;
+	padding: 20px 28px;
+	font-size: 25px;
+	line-height: 20px;
+	font-style: italic;
+	background: #C6C6C6;
+	border-top: 1px solid #AAA;
+}
+
+.tagline del {
+	color: #999;
+}
+
+.tagline ins {
+	text-decoration: none;
+	border-bottom: 3px solid yellow;
+}
+
+
+/* Banner */
+
+.banner {
+	background: url(../images/coworking.jpg) center center no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	padding: 28px;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, .75);
+	display: flex;
+	justify-content: flex-end;
+}
+
+.blurb {
+	background: rgba(255, 255, 255, .8);
+	width: 350px;
+	padding: 36px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .75);
+}
+
+
+/* Three columns */
+
+.touts {
+	background: #EEE;
+	display: flex;
+	padding: 20px 0;
+}
+
+.tout {
+	width: 279px;
+	flex-grow: 1;
+	padding: 20px;
+	border-right: 1px solid #ccc;
+}
+
+.tout:last-child {
+	border-right: 1px solid rgba(0, 0, 0, 0);
+}
+
+.tout .button {
+	background: #C6C6C6;
+}
+
+
+/* Footer */
+
+footer {
+	background: black;
+	color: white;
+	padding: 20px 30px;
+}
+
+
+/* MEDIA QUERIES */
+
+/* Medium screens and smaller smaller - less than 1000px */
+@media (max-width: 1000px) {
+	/* give body width of 95% */
+	body {
+		width: 95%;
+	}
+	/* have elements inside of header stack on top of eachother */
+	header {
+		display: block;
+	}
+	/* give the header nave a margin top of 20px and have the elements start from the left instead of right */
+	.header-nav {
+		margin-top: 20px;
+		justify-content: flex-start;
+	}
+	/* change the padding of header nav links so it is on the right instead of left */
+	.header-nav__a {
+		padding-left: 0;
+		padding-right: 20px;
+	}
+}
+
+
+/* Small screens and smaller - less than 550px*/
+
+@media (max-width: 550px) {
+	/* give body a width of 100% */
+	body {
+		width: 100%;
+	}
+	/* don't have header nav be display flex */
+	.header-nav {
+		display: block;
+	}
+
+	/* center the content inside banner */
+	.banner {
+		justify-content: center;
+	}
+
+	/* have the touts stack on top of eachother */
+	.touts {
+		display: block;
+	}
+	/* make each tout full width using percent width. you may need to use the border-box property to prevent the padding from the tout's padding cause an overflow of content. get rid of borders on the tout */
+	.tout {
+		width: 100%;
+		box-sizing: border-box;
+		border: none;
+	}
+}
