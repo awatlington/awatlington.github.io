@@ -1,1 +1,0 @@
-Your mission is to match spec.png with html and css, utilizing the box model. 
