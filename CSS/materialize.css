@@ -5057,9 +5057,9 @@ body {
 }
 
 .item:hover figcaption {
-  -webkit-animation: show .25s ease-in .120s forwards;
-  -o-animation: show .25s ease-in .120s forwards;
-  animation: show .25s ease-in .120s forwards
+  -webkit-animation: show .50s ease-in .100s forwards;
+  -o-animation: show .50s ease-in .120s forwards;
+  animation: show .50s ease-in .120s forwards
 }
 
 .item:hover p:nth-of-type(1) span {
@@ -5087,9 +5087,9 @@ body {
   top: 0;
   opacity: 1;
   -webkit-transform: rotate(0);
-  -ms-transform: rotate(0);
-  -o-transform: rotate(0);
-  transform: rotate(0)
+  -ms-transform: rotate(.5);
+  -o-transform: rotate(5);
+  transform: rotate(5);
 }
 
 figure {
