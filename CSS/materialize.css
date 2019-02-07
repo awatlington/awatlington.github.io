@@ -1,5 +1,3 @@
-
-
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -159,23 +157,6 @@ html [type="button"],
   -webkit-appearance: button;
 }
 
-/* 
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-} */
-
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
@@ -190,23 +171,12 @@ legend {
   padding: 0;
   white-space: normal;
 }
-/* 
-progress {
-  display: inline-block;
-  vertical-align: baseline;
-} */
+
 
 textarea {
   overflow: auto;
 }
 
-
-/* [type="checkbox"],
-[type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0;
-} */
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
