@@ -12,7 +12,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
 (function (factory) {
   window.cash = factory();
 })(function () {
@@ -25,7 +24,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   var noop = function () { },
     isFunction = function (item) {
-      // @see https://crbug.com/568448
       return typeof item === typeof noop && item.call;
     },
     isString = function (item) {
@@ -70,7 +68,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return this;
     }
 
-    // If already a cash collection, don't do any further processing
     if (selector.cash && selector !== win) {
       return selector;
     }
@@ -81,14 +78,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     if (isString(selector)) {
       elems = idMatch.test(selector) ?
-        // If an ID use the faster getElementById check
         doc.getElementById(selector.slice(1)) : htmlMatch.test(selector) ?
-          // If HTML, parse it into real elements
           parseHTML(selector) :
-          // else use `find`
           find(selector, context);
 
-      // If function, use as shortcut for DOM ready
     } else if (isFunction(selector)) {
       onReady(selector); return this;
     }
@@ -97,12 +90,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return this;
     }
 
-    // If a single DOM element is passed in or received via ID, return the single element
     if (elems.nodeType || elems === win) {
       this[0] = elems;
       this.length = 1;
     } else {
-      // Treat like an array and loop through each item.
       length = this.length = elems.length;
       for (; i < length; i++) {
         this[i] = elems[i];
@@ -116,7 +107,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return new Init(selector, context);
   }
 
-  var fn = cash.fn = cash.prototype = Init.prototype = { // jshint ignore:line
+  var fn = cash.fn = cash.prototype = Init.prototype = { 
     cash: true,
     length: 0,
     push: push,
@@ -176,13 +167,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   function getCompareFunction(selector) {
     return (
-      /* Use browser's `matches` function if string */
       isString(selector) ? matches :
-        /* Match a cash element */
         selector.cash ? function (el) {
           return selector.is(el);
         } :
-          /* Direct comparison */
           function (el, selector) {
             return el === selector;
           }
@@ -572,7 +560,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     },
 
     on: function (eventName, delegate, callback, runOnce) {
-      // jshint ignore:line
       var originalCallback;
       if (!isString(eventName)) {
         for (var key in eventName) {
@@ -1014,12 +1001,10 @@ var Component = function () {
   function Component(classDef, el, options) {
     _classCallCheck(this, Component);
 
-    // Display error if el is valid HTML Element
     if (!(el instanceof Element)) {
       console.error(Error(el + ' is not an HTML Element'));
     }
 
-    // If exists, destroy and reinitialize in child
     var ins = classDef.getInstance(el);
     if (!!ins) {
       ins.destroy();
@@ -1092,9 +1077,7 @@ M.keys = {
   ARROW_DOWN: 40
 };
 
-/**
- * TabPress Keydown handler
- */
+
 M.tabPressed = false;
 M.keyDown = false;
 var docHandleKeydown = function (e) {
@@ -1322,25 +1305,21 @@ M.checkPossibleAlignments = function (el, container, bounding, offset) {
   var scrolledYTopEdge = bounding.top - scrollTop;
   var scrolledYBottomEdge = bounding.top + elOffsetRect.height - scrollTop;
 
-  // Check for container and viewport for left
   canAlign.spaceOnRight = !containerAllowsOverflow ? containerWidth - (scrolledX + bounding.width) : window.innerWidth - (elOffsetRect.left + bounding.width);
   if (canAlign.spaceOnRight < 0) {
     canAlign.left = false;
   }
 
-  // Check for container and viewport for Right
   canAlign.spaceOnLeft = !containerAllowsOverflow ? scrolledX - bounding.width + elOffsetRect.width : elOffsetRect.right - bounding.width;
   if (canAlign.spaceOnLeft < 0) {
     canAlign.right = false;
   }
 
-  // Check for container and viewport for Top
   canAlign.spaceOnBottom = !containerAllowsOverflow ? containerHeight - (scrolledYTopEdge + bounding.height + offset) : window.innerHeight - (elOffsetRect.top + bounding.height + offset);
   if (canAlign.spaceOnBottom < 0) {
     canAlign.top = false;
   }
 
-  // Check for container and viewport for Bottom
   canAlign.spaceOnTop = !containerAllowsOverflow ? scrolledYBottomEdge - (bounding.height - offset) : elOffsetRect.bottom - (bounding.height + offset);
   if (canAlign.spaceOnTop < 0) {
     canAlign.bottom = false;
@@ -1464,11 +1443,8 @@ M.throttle = function (func, wait, options) {
     return result;
   };
 };
-; /*
-  v2.2.0
-  2017 Julian Garnier
-  Released under the MIT license
-  */
+; 
+
 var $jscomp = { scope: {} }; $jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (e, r, p) {
   if (p.get || p.set) throw new TypeError("ES3 does not support getters and setters."); e != Array.prototype && e != Object.prototype && (e[r] = p.value);
 }; $jscomp.getGlobal = function (e) {
@@ -1968,17 +1944,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "destroy",
 
 
-      /**
-       * Teardown component
-       */
+      
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_Collapsible = undefined;
       }
 
-      /**
-       * Setup Event Handlers
-       */
+      
 
     }, {
       key: "_setupEventHandlers",
@@ -1993,9 +1965,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         });
       }
 
-      /**
-       * Remove Event Handlers
-       */
+      
 
     }, {
       key: "_removeEventHandlers",
@@ -2195,9 +2165,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         return _get(Collapsible.__proto__ || Object.getPrototypeOf(Collapsible), "init", this).call(this, this, els, options);
       }
 
-      /**
-       * Get Instance
-       */
+      
 
     }, {
       key: "getInstance",
@@ -2322,9 +2290,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "destroy",
 
 
-      /**
-       * Teardown component
-       */
+      
       value: function destroy() {
         this._resetDropdownStyles();
         this._removeEventHandlers();
@@ -2332,9 +2298,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.M_Dropdown = undefined;
       }
 
-      /**
-       * Setup Event Handlers
-       */
+     
 
     }, {
       key: "_setupEventHandlers",
@@ -2360,9 +2324,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Remove Event Handlers
-       */
+     
 
     }, {
       key: "_removeEventHandlers",
@@ -2548,9 +2510,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.filterTimeout = setTimeout(this._resetFilterQueryBound, 1000);
       }
 
-      /**
-       * Setup dropdown
-       */
+      
 
     }, {
       key: "_resetFilterQuery",
@@ -2738,9 +2698,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         });
       }
 
-      /**
-       * Place dropdown
-       */
+      
 
     }, {
       key: "_placeDropdown",
@@ -2757,9 +2715,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.dropdownEl.style.transformOrigin = (positionInfo.horizontalAlignment === 'left' ? '0' : '100%') + " " + (positionInfo.verticalAlignment === 'top' ? '0' : '100%');
       }
 
-      /**
-       * Open Dropdown
-       */
+      
 
     }, {
       key: "open",
@@ -2809,9 +2765,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Recalculate dimensions
-       */
+      
 
     }, {
       key: "recalculateDimensions",
@@ -2833,9 +2787,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         return _get(Dropdown.__proto__ || Object.getPrototypeOf(Dropdown), "init", this).call(this, this, els, options);
       }
 
-      /**
-       * Get Instance
-       */
+     
 
     }, {
       key: "getInstance",
@@ -2953,9 +2905,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.M_Modal = undefined;
       }
 
-      /**
-       * Setup Event Handlers
-       */
+    
 
     }, {
       key: "_setupEventHandlers",
@@ -2970,9 +2920,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.addEventListener('click', this._handleModalCloseClickBound);
       }
 
-      /**
-       * Remove Event Handlers
-       */
+      
 
     }, {
       key: "_removeEventHandlers",
@@ -3003,9 +2951,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Handle Overlay Click
-       */
+    
 
     }, {
       key: "_handleOverlayClick",
@@ -3057,9 +3003,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Animate in modal
-       */
+     
 
     }, {
       key: "_animateIn",
@@ -3117,9 +3061,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Animate out modal
-       */
+      
 
     }, {
       key: "_animateOut",
@@ -3187,14 +3129,11 @@ $jscomp.polyfill = function (e, r, p, m) {
         Modal._modalsOpen++;
         this._nthModalOpened = Modal._modalsOpen;
 
-        // Set Z-Index based on number of currently open modals
         this.$overlay[0].style.zIndex = 1000 + Modal._modalsOpen * 2;
         this.el.style.zIndex = 1000 + Modal._modalsOpen * 2 + 1;
 
-        // Set opening trigger, undefined indicates modal was opened by javascript
         this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
 
-        // onOpenStart callback
         if (typeof this.options.onOpenStart === 'function') {
           this.options.onOpenStart.call(this, this.el, this._openingTrigger);
         }
@@ -3266,9 +3205,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         return _get(Modal.__proto__ || Object.getPrototypeOf(Modal), "init", this).call(this, this, els, options);
       }
 
-      /**
-       * Get Instance
-       */
+     
 
     }, {
       key: "getInstance",
@@ -3371,17 +3308,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "destroy",
 
 
-      /**
-       * Teardown component
-       */
+    
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_Materialbox = undefined;
       }
 
-      /**
-       * Setup Event Handlers
-       */
+      
 
     }, {
       key: "_setupEventHandlers",
@@ -3390,9 +3323,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.addEventListener('click', this._handleMaterialboxClickBound);
       }
 
-      /**
-       * Remove Event Handlers
-       */
+     
 
     }, {
       key: "_removeEventHandlers",
@@ -3416,9 +3347,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Handle Window Scroll
-       */
+      
 
     }, {
       key: "_handleWindowScroll",
@@ -3428,10 +3357,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Handle Window Resize
-       */
-
+     
     }, {
       key: "_handleWindowResize",
       value: function _handleWindowResize() {
@@ -3454,9 +3380,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Find ancestors with overflow: hidden; and make visible
-       */
+    
 
     }, {
       key: "_makeAncestorsOverflowVisible",
@@ -3477,9 +3401,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
-      /**
-       * Animate image in
-       */
+    
 
     }, {
       key: "_animateImageIn",
@@ -3573,9 +3495,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         anim(animOptions);
       }
 
-      /**
-       * Update open and close vars
-       */
+     
 
     }, {
       key: "_updateVars",
@@ -3585,9 +3505,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.caption = this.el.getAttribute('data-caption') || '';
       }
 
-      /**
-       * Open Materialbox
-       */
+     
 
     }, {
       key: "open",
@@ -3717,9 +3635,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         window.addEventListener('keyup', this._handleWindowEscapeBound);
       }
 
-      /**
-       * Close Materialbox
-       */
+     
 
     }, {
       key: "close",
@@ -3778,9 +3694,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         return _get(Materialbox.__proto__ || Object.getPrototypeOf(Materialbox), "init", this).call(this, this, els, options);
       }
 
-      /**
-       * Get Instance
-       */
+     
 
     }, {
       key: "getInstance",
@@ -3847,9 +3761,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       key: "destroy",
 
 
-      /**
-       * Teardown component
-       */
+     
       value: function destroy() {
         Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
         this.$img[0].style.transform = '';
@@ -12408,4 +12320,94 @@ $('.third').each(function(){
 });
 
 // accordian
+//checks if element it is called on is visible (only checks horizontally
+(function($) {
+  var $window = $(window);
+  
+  $.fn.isVisible = function(){
+    var $this = $(this),
+      Left = $this.offset().left,
+      visibleWidth = $window .width();
 
+    return Left < visibleWidth;  
+  }
+})(jQuery);
+
+(function($){
+  var list = $('.portfolio-items'),
+      showVisibleItems = function(){
+      list.children('.item:not(.falldown)').each(function(el, i){
+          var $this = $(this);
+          if($this.isVisible()){
+            $this.addClass('falldown');
+          }
+        });
+      };
+  
+  //initially show all visible items before any scroll starts
+  showVisibleItems();
+  
+  //then on scroll check for visible items and show them
+  list.scroll(function(){
+    showVisibleItems();
+  });
+  
+  //image hover pan effect
+  list.on('mousemove','img', function(ev){
+      var $this = $(this),
+          posX = ev.pageX, 
+          posY = ev.pageY,
+          data = $this.data('cache');
+    //cache necessary variables
+        if(!data){
+          data = {};
+          data.marginTop = - parseInt($this.css('top')),
+          data.marginLeft = - parseInt($this.css('left')),
+          data.parent = $this.parent('.view'),
+          $this.data('cache', data); 
+        }
+
+    var originX = data.parent.offset().left,
+        originY =  data.parent.offset().top;
+    
+       //move image
+       $this.css({
+          'left': -( posX - originX ) / data.marginLeft,
+          'top' : -( posY - originY ) / data.marginTop
+       }); 
+  });
+  
+  
+  list.on('mouseleave','.item', function(e){
+    $(this).find('img').css({
+      'left': '0', 
+      'top' : '0'
+    });
+  });
+  
+  list.mouseleave(function(event, delta) {
+
+      this.scrollLeft -= (delta * 60);
+    
+      event.preventDefault();
+
+   });
+})(jQuery);
+
+ 
+
+$(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+
+// $(window).bind('scroll', function() {
+//   var navHeight = $( window ).height() -70;
+//     if ($(window).scrollTop() > navHeight) {
+//       $('nav').addClass('fixed');
+//     }
+//     else {
+//       $('nav').removeClass('fixed');
+//     }
+//  });
